@@ -8,5 +8,4 @@ class MessageHash(object):
 
     @staticmethod
     def sha256(message):
-        #do we need the encoding?
         return hashlib.sha256(message.encode()).hexdigest()
