@@ -12,7 +12,7 @@ from MessageHash.store import Store
 from tornado.concurrent import run_on_executor
 from concurrent.futures import ThreadPoolExecutor
 
-redis = Redis(host='redis', port=6379)
+redis = Redis(host="redis", port=6379)
 store = Store(redis)
 
 try:
@@ -37,7 +37,7 @@ class MainHandler(tornado.web.RequestHandler):
     def background_task(self, message):
         if message:
             response = {
-                "digest" : self.__create_message_digest(message)
+                'digest' : self.__create_message_digest(message)
             }
             return 201, json.dumps(response, sort_keys=True)
         else:
@@ -48,10 +48,13 @@ class MainHandler(tornado.web.RequestHandler):
 
     @tornado.gen.coroutine
     def post(self):
-        message = self.get_argument('message',None)
+        message = tornado.escape.json_decode(self.request.body).get('message', None)
         status_code, result = yield self.background_task(message)
         self.set_status(status_code)
         self.write(result)
+
+    def set_default_headers(self):
+        self.set_header('Content-Type', 'application/json')
 
     def get(self, *args):
         if len(args) == 1:
@@ -59,7 +62,7 @@ class MainHandler(tornado.web.RequestHandler):
             message = store.value_of(hash)
             if message:
                 response = {
-                    "message" : message
+                    'message' : message
                 }
                 self.set_status(200)
                 return self.write(json.dumps(response, sort_keys=True))
