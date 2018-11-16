@@ -6,6 +6,8 @@ from __future__ import absolute_import
 
 __author__       = 'Greeshma Gopinath'
 __email__        = 'greeshma24@gmail.com'
+__copyright__    = 'Copyright (c) 2018 Greeshma Gopinath'
+__license__      = 'MIT License'
 __url__          = 'https://github.com/greeshmagopinath/MessageHash'
 __download_url__ = 'https://github.com/greeshmagopinath/MessageHash'
 __version__      = '0.1'

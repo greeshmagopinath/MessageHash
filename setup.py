@@ -26,6 +26,7 @@ def extract_metaitem(meta):
 setup(
     name = 'message_hash',
     version=extract_metaitem('version'),
+    license=extract_metaitem('license'),
     description=extract_metaitem('description'),
     long_description=(read('README.rst')),
     author=extract_metaitem('author'),
