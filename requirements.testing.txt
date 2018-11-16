@@ -1,0 +1,7 @@
+fakeredis
+pytest
+pytest-cov
+pytest-runner
+codecov
+tox
+tox-pyenv
