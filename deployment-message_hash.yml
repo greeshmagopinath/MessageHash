@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: messagehash
+spec:
+  selector:
+    matchLabels:
+      app: messagehash
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: messagehash
+    spec:
+      containers:
+      - image: greeshma24/messagehash:1.0
+        name: messagehash
+        imagePullPolicy: Always
+        ports:
+          - name: http
+            containerPort: 80

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: messagehash
+spec:
+  selector:
+    app: messagehash
+  type: NodePort
+  ports:
+  - nodePort: 31317
+    port: 80
+    protocol: TCP

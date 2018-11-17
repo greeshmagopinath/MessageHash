@@ -18,7 +18,7 @@ MessageHash
 Introduction
 ============
 
-Message Hashing service using `Tornado` and `Redis` runs on `Docker`.
+Message Hashing service using `Tornado` and `Redis` runs on `Docker` and Kubernetes.
 
 ================
 Getting the code
@@ -90,7 +90,7 @@ Running in Kubernetes
     kubectl create -f service-message_hash.yml
 
     # Get url for **message_hash**
-    minikube service message_hash --message
+    minikube service message_hash --url
 
 ------------
 Sample Usage
